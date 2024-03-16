@@ -5,13 +5,13 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ] # A ejecutar en push a cualquier branch
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ] # A ejecutar en pull a cualquier branch
 
 jobs:
   run_tests:
-    name: Install node modules and run unit tests
+    name: Install node modules and run unit tests # Ejecuta las pruebas unitarias con los módulos de node
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,4 +27,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run test:ci
+    - run: npm run test:ci # Acá propiamente se corren los tests
